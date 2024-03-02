@@ -18,7 +18,7 @@
             Upload
             <ui-input class="inline" name="file" required type="file" />
           </ui-label>
-          <ui-button variant="default" type="submit">Upload file</ui-button>
+          <ui-button :disabled="loading.isLoading" variant="default" type="submit">Upload file</ui-button>
         </form>
       </ui-card-content>
     </ui-card>
@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import { useToast } from "./components/ui/toast/index.js";
-const loading = useLoadingIndicator({ duration: 15000 });
+const loading = reactive(useLoadingIndicator({ duration: 15000 }));
 loading.finish();
 const { toast } = useToast();
 async function handleUpload(event: SubmitEvent) {
