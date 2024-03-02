@@ -16,6 +16,7 @@ export default defineNuxtConfig({
   basicAuth: {
     enabled: true,
     allowedRoutes: ["/webhooks/*"],
+    users: import.meta.env.NUXT_BASIC_AUTH_USERS
   },
   shadcn: {
     prefix: "ui",
