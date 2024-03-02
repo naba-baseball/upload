@@ -11,7 +11,7 @@ export default defineNuxtConfig({
       bucket: import.meta.env.NUXT_S3_BUCKET,
     },
     discordWebhook: import.meta.env.NUXT_DISCORD_WEBHOOK,
-    deployUrl: import.meta.env.NUXT_DEPLOY_URL,
+    deployWebhook: import.meta.env.NUXT_DEPLOY_WEBHOOK,
   },
   basicAuth: {
     enabled: true,
