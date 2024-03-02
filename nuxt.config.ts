@@ -5,13 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     s3: {
-      endpoint: "",
-      secretAccessKey: "",
-      accessKeyId: "",
-      bucket: "",
+      endpoint: import.meta.env.NUXT_S3_ENDPOINT,
+      secretAccessKey: import.meta.env.NUXT_S3_SECRET_ACCESS_KEY,
+      accessKeyId: import.meta.env.NUXT_S3_ACCESS_KEY_ID,
+      bucket: import.meta.env.NUXT_S3_BUCKET,
     },
-    discordWebhook: "",
-    deployUrl: "",
+    discordWebhook: import.meta.env.NUXT_DISCORD_WEBHOOK,
+    deployUrl: import.meta.env.NUXT_DEPLOY_URL,
   },
   basicAuth: {
     enabled: true,
