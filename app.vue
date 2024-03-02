@@ -48,15 +48,15 @@ async function handleUpload(event: SubmitEvent) {
       toast({
         title: "Upload failed",
         description: "Please try again",
-        duration: 30_000,
+        duration: 7000,
       });
       throw err;
     });
     await $fetch("/api/deploy", { method: "POST" }).catch((err) => {
       toast({
-        title: "Deployment failed",
+        title: "Deployment trigger failed",
         description: "Please try again",
-        duration: 30_000,
+        duration: 7000,
       });
       throw err;
     });
