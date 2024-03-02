@@ -5,13 +5,13 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     s3: {
-      endpoint: "set me in the environment",
-      secretAccessKey: "set me in the environment",
-      accessKeyId: "set me in the environment",
-      bucket: "set me in the environment",
+      endpoint: "",
+      secretAccessKey: "",
+      accessKeyId: "",
+      bucket: "",
     },
-    discordWebhook: "set me in the environment",
-    deployUrl: "set me in the environment",
+    discordWebhook: "",
+    deployUrl: "",
   },
   basicAuth: {
     enabled: true,

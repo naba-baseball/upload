@@ -52,14 +52,14 @@ async function handleUpload(event: SubmitEvent) {
       });
       throw err;
     });
-    // await $fetch("/api/deploy", { method: "POST" }).catch((err) => {
-    //   toast({
-    //     title: "Deployment failed",
-    //     description: "Please try again",
-    //     duration: 30_000,
-    //   });
-    //   throw err;
-    // });
+    await $fetch("/api/deploy", { method: "POST" }).catch((err) => {
+      toast({
+        title: "Deployment failed",
+        description: "Please try again",
+        duration: 30_000,
+      });
+      throw err;
+    });
     toast({
       title: "Website uploaded!",
       description: "It should be deployed in a few minutes :)",
