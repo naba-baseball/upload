@@ -1,13 +1,17 @@
+import { AwsClient } from "aws4fetch";
+
 export default defineEventHandler(async (event) => {
-  const body = await readMultipartFormData(event);
-  if (!body) throw createError(400, "No files found in request");
-  const [data] = body;
-  if (!data) throw createError(400, "No files found in request");
-  if (data) {
-    await useStorage("uploads").setItemRaw(
-      data.filename ?? "filename",
-      data.data
-    );
-  }
-  return "done!";
+  const config = useRuntimeConfig();
+  const client = new AwsClient({
+    accessKeyId: config.s3.accessKeyId,
+    secretAccessKey: config.s3.secretAccessKey,
+    region: "auto",
+  });
+  const thing = await client.sign(`${config.s3.endpoint}/${config.s3.bucket}/reports.tar.gz`, {
+    method: 'PUT',
+    aws: {
+      signQuery: true,
+    }
+  })
+  return thing.url
 });
