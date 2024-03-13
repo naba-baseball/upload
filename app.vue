@@ -1,12 +1,13 @@
 <template>
-  <main class="h-screen grid place-content-center">
-    <ui-card class="relative overflow-hidden">
-      <nuxt-loading-indicator class="!absolute !rounded top-0" />
-      <ui-card-header>
-        <ui-card-title> Upload the reports file here </ui-card-title>
-        <span> it might take several minutes </span>
-      </ui-card-header>
-      <ui-card-content>
+  <main class="h-screen font-sans grid place-content-center bg-zinc-100 dark:bg-zinc-950">
+    <u-container>
+      <u-notifications />
+      <u-card class="relative overflow-hidden">
+        <nuxt-loading-indicator class="!absolute !rounded top-0" />
+        <template #header>
+          <div class="text-lg font-bold">Upload the reports file here</div>
+          <span class="opacity-70"> it might take several minutes </span>
+        </template>
         <form
           @submit.prevent="handleUpload($event as SubmitEvent)"
           name="upload"
@@ -14,23 +15,27 @@
           enctype="multipart/form-data"
           class="space-y-4"
         >
-          <ui-label>
-            Upload
-            <ui-input class="inline" name="file" required type="file" />
-          </ui-label>
-          <ui-button :disabled="loading.isLoading" variant="default" type="submit">Upload file</ui-button>
+          <u-form-group label="Upload">
+            <u-input type="file" name="file" required />
+          </u-form-group>
+          <u-button
+            icon="i-lucide-upload"
+            type="submit"
+            :disabled="loading.isLoading"
+          >
+            Upload file
+          </u-button>
         </form>
-      </ui-card-content>
-    </ui-card>
-    <ui-toaster />
+      </u-card>
+    </u-container>
+    <!-- <ui-toaster /> -->
   </main>
 </template>
 
 <script lang="ts" setup>
-import { useToast } from "./components/ui/toast/index.js";
-const loading = reactive(useLoadingIndicator({ duration: 15000 }));
+const loading = reactive(useLoadingIndicator({ duration: 30_000 }));
 loading.finish();
-const { toast } = useToast();
+const toast = useToast();
 async function handleUpload(event: SubmitEvent) {
   const form = event.currentTarget as HTMLFormElement;
   const formData = new FormData(form);
@@ -45,24 +50,25 @@ async function handleUpload(event: SubmitEvent) {
       method: "PUT",
       body: file,
     }).catch((err) => {
-      toast({
+      toast.add({
         title: "Upload failed",
         description: "Please try again",
-        duration: 7000,
+        timeout: 0,
       });
       throw err;
     });
     await $fetch("/api/deploy", { method: "POST" }).catch((err) => {
-      toast({
+      toast.add({
         title: "Deployment trigger failed",
         description: "Please try again",
-        duration: 7000,
+        timeout: 0,
       });
       throw err;
     });
-    toast({
+    toast.add({
       title: "Website uploaded!",
       description: "It should be deployed in a few minutes :)",
+      timeout: 0,
     });
   } finally {
     loading.finish();
