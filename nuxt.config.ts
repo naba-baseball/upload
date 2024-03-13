@@ -1,8 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@kgierke/nuxt-basic-auth", "@nuxtjs/tailwindcss", "shadcn-nuxt"],
-  css: ["~/assets/css/tailwind.css"],
+  modules: ["@kgierke/nuxt-basic-auth", "@nuxt/ui", "@nuxt/fonts"],
   devtools: { enabled: true },
+  ui: {
+    icons: ["lucide"],
+  },
   runtimeConfig: {
     s3: {
       endpoint: import.meta.env.NUXT_S3_ENDPOINT,
@@ -16,9 +18,9 @@ export default defineNuxtConfig({
   basicAuth: {
     enabled: true,
     allowedRoutes: ["/webhooks/*"],
-    users: import.meta.env.NUXT_BASIC_AUTH_USERS
+    users: import.meta.env.NUXT_BASIC_AUTH_USERS,
   },
-  shadcn: {
-    prefix: "ui",
-  },
+  colorMode:{
+    preference: 'light'
+  }
 });
