@@ -10,17 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/fonts": "^0.2.1",
-    "@nuxt/ui": "^2.14.2",
-    "@nuxtjs/tailwindcss": "^6.11.4"
+    "@iconify-json/lucide": "^1.1.207",
+    "@kgierke/nuxt-basic-auth": "^1.6.0",
+    "@nuxt/fonts": "^0.7.2",
+    "@nuxt/ui": "^2.18.4",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "nuxt": "^3.12.4"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.1.173",
-    "@kgierke/nuxt-basic-auth": "^1.5.0",
-    "@vueuse/core": "^10.9.0",
-    "aws4fetch": "^v1.0.18-beta.2",
-    "nuxt": "^3.10.3",
-    "vue": "^3.4.19",
-    "vue-router": "^4.3.0"
+    "aws4fetch": "^1.0.19"
   }
 }
