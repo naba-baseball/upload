@@ -1,15 +1,15 @@
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
   if (!useRuntimeConfig().discordWebhook) {
     throw createError({
       statusCode: 500,
-      message: "Discord webhook not set",
-    });
+      message: 'Discord webhook not set',
+    })
   }
   await $fetch(useRuntimeConfig().discordWebhook, {
-    method: "POST",
+    method: 'POST',
     body: {
-      content: "Website deploy failed!",
+      content: 'Website deploy failed!',
     },
-  });
-  return "ok";
-});
+  })
+  return 'ok'
+})

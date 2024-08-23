@@ -1,7 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
-  compatibilityDate: "2024-08-21",
+  future: {
+    compatibilityVersion: 4,
+  },
+  extends: 'github:naba-baseball/naba-base-layer/layer',
   runtimeConfig: {
     s3: {
       endpoint: import.meta.env.NUXT_S3_ENDPOINT,
@@ -12,14 +14,11 @@ export default defineNuxtConfig({
     discordWebhook: import.meta.env.NUXT_DISCORD_WEBHOOK,
     deployWebhook: import.meta.env.NUXT_DEPLOY_WEBHOOK,
   },
-  modules: ["@kgierke/nuxt-basic-auth", "@nuxt/ui", "@nuxt/fonts"],
+
+  modules: ['@kgierke/nuxt-basic-auth'],
   basicAuth: {
     enabled: true,
-    allowedRoutes: ["/webhooks/*"],
+    allowedRoutes: ['/webhooks/*'],
     users: import.meta.env.NUXT_BASIC_AUTH_USERS,
   },
-  colorMode:{
-    preference: 'light'
-  },
-
-});
+})
