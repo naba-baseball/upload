@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   },
 
   modules: ['@kgierke/nuxt-basic-auth', '@nuxthub/core'],
+  hub: {
+    blob: true,
+  },
   basicAuth: {
     enabled: true,
     allowedRoutes: ['/webhooks/*'],
