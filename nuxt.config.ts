@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     deployWebhook: import.meta.env.NUXT_DEPLOY_WEBHOOK,
   },
 
-  modules: ['@kgierke/nuxt-basic-auth'],
+  modules: ['@kgierke/nuxt-basic-auth', '@nuxthub/core'],
   basicAuth: {
     enabled: true,
     allowedRoutes: ['/webhooks/*'],
