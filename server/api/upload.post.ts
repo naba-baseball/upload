@@ -1,7 +1,7 @@
 import { AwsClient } from 'aws4fetch'
 
-export default defineEventHandler(async () => {
-  const config = useRuntimeConfig()
+export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig(event)
   if (!config.s3.accessKeyId) {
     throw createError({
       statusCode: 500,
