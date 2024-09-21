@@ -1,29 +1,24 @@
 <script lang="ts" setup>
-const loading = reactive(useLoadingIndicator({ duration: 30_000 }))
-loading.finish()
+const loadingProgress = ref(0)
+const loading = reactive(useLoadingIndicator({ estimatedProgress: () => loadingProgress.value }))
 const toast = useToast()
+const startUpload = useMultipartUpload('/api/upload')
 async function handleUpload(event: SubmitEvent) {
   const form = event.currentTarget as HTMLFormElement
   const formData = new FormData(form)
   const file = formData.get('file') as File
-  const url: string = await $fetch('/api/upload', {
-    method: 'POST',
-  })
-  if (!url)
-    return
   try {
     loading.start()
-    await fetch(url, {
-      method: 'PUT',
-      body: file,
-    }).catch((err) => {
+    const { completed, progress } = startUpload(file)
+    const stopProgressSync = watchEffect(() => { loadingProgress.value = progress.value })
+    await completed.catch((err) => {
       toast.add({
         title: 'Upload failed',
         description: 'Please try again',
         timeout: 0,
       })
       throw err
-    })
+    }).finally(() => { stopProgressSync() })
     await $fetch('/api/deploy', { method: 'POST' }).catch((err) => {
       toast.add({
         title: 'Deployment trigger failed',
