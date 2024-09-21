@@ -6,7 +6,8 @@ const startUpload = useMultipartUpload('/api/upload')
 async function handleUpload(event: SubmitEvent) {
   const form = event.currentTarget as HTMLFormElement
   const formData = new FormData(form)
-  const file = formData.get('file') as File
+  const formFile = formData.get('file') as File
+  const file = new File([formFile], 'reports.tar.gz')
   try {
     loading.start()
     const { completed, progress } = startUpload(file)
