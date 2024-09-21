@@ -5,17 +5,14 @@ export default defineNuxtConfig({
   },
   extends: 'github:naba-baseball/naba-base-layer/layer',
   runtimeConfig: {
-    s3: {
-      endpoint: '',
-      secretAccessKey: '',
-      accessKeyId: '',
-      bucket: '',
-    },
     discordWebhook: '',
     deployWebhook: '',
   },
-
-  modules: ['@kgierke/nuxt-basic-auth'],
+  compatibilityDate: '2024-09-21',
+  modules: ['@kgierke/nuxt-basic-auth', '@nuxthub/core'],
+  hub: {
+    blob: true,
+  },
   basicAuth: {
     enabled: true,
     allowedRoutes: ['/webhooks/*'],
