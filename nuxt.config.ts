@@ -19,6 +19,5 @@ export default defineNuxtConfig({
   basicAuth: {
     enabled: true,
     allowedRoutes: ['/webhooks/*'],
-    users: '',
   },
 })
