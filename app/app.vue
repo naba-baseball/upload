@@ -69,15 +69,18 @@ const { isSupported: isNetworkSupported } = useNetwork()
           <UFormGroup label="Upload reports file">
             <UInput type="file" name="file" icon="i-lucide-file-archive" required @change="fileSize = ($event?.[0]?.size) ?? undefined" />
             <template #help>
-              <span v-if="isNetworkSupported" class="opacity-70">
-                Your estimated upload time:
-                <ClientOnly>
-                  <span data-allow-mismatch>{{ estimatedTime }}</span>
-                </ClientOnly>
-              </span>
-              <span v-else>
-                Upload could take several minutes
-              </span>
+              <ClientOnly>
+                <template #fallback>
+                  <span>&nbsp;</span>
+                </template>
+                <span v-if="isNetworkSupported" class="opacity-70">
+                  Your estimated upload time:
+                  <span>{{ estimatedTime }}</span>
+                </span>
+                <span v-else>
+                  Upload could take several minutes
+                </span>
+              </ClientOnly>
             </template>
           </UFormGroup>
           <UButton
