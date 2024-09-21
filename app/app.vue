@@ -2,7 +2,7 @@
 const loadingProgress = ref(0)
 const loading = ref(false)
 const toast = useToast()
-const startUpload = useMultipartUpload('/api/upload', { partSize: 5 * 1024 * 1024 })
+const startUpload = useMultipartUpload('/api/upload', { partSize: 5 * 1024 * 1024, maxRetry: 10 })
 async function handleUpload(event: SubmitEvent) {
   const form = event.currentTarget as HTMLFormElement
   const formData = new FormData(form)
@@ -73,7 +73,7 @@ const { isSupported: isNetworkSupported } = useNetwork()
                 <template #fallback>
                   <span>&nbsp;</span>
                 </template>
-                <span v-if="isNetworkSupported" class="opacity-70">
+                <span v-if="isNetworkSupported">
                   Your estimated upload time:
                   <span>{{ estimatedTime }}</span>
                 </span>
