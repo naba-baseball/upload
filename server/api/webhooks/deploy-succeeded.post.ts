@@ -1,4 +1,4 @@
-export default defineEventHandler(async (event) => {
+export default defineLazyEventHandler(() => defineEventHandler(async (event) => {
   if (!useRuntimeConfig(event).discordWebhook) {
     throw createError({
       statusCode: 500,
@@ -13,4 +13,4 @@ export default defineEventHandler(async (event) => {
     },
   })
   return 'OK'
-})
+}))
