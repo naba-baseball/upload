@@ -19,6 +19,6 @@ export default defineLazyEventHandler(() => defineEventHandler(async (event) => 
   if (!(reqUsername === body.username && reqPassword === body.password)) {
     throw createError({ message: 'Invalid username or password', statusCode: 403 })
   }
-  await setUserSession(event, { user: { signedInAt: new Date().toISOString() } })
+  await setUserSession(event, { user: { signedInAt: new Date().toISOString() } }, { maxAge: 60 * 60 * 24 * 7 })
   return await getUserSession(event)
 }))
