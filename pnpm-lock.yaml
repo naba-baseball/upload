@@ -14,9 +14,6 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.4
         version: 1.2.4
-      '@kgierke/nuxt-basic-auth':
-        specifier: ^1.6.0
-        version: 1.6.0(magicast@0.3.5)(rollup@4.22.4)
       '@nuxt/eslint':
         specifier: ^0.5.7
         version: 0.5.7(eslint@9.11.0(jiti@1.21.6))(magicast@0.3.5)(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.7(@types/node@22.5.5)(terser@5.33.0))
@@ -1032,9 +1029,6 @@ packages:
 
   '@jsdevtools/ono@7.1.3':
     resolution: {integrity: sha512-4JQNk+3mVzK3xh2rqd6RB4J46qUR19azEHBneZyTZM+c456qOrbbM/5xcR8huNCCcbVt7+UmizG6GuUvPvKUYg==}
-
-  '@kgierke/nuxt-basic-auth@1.6.0':
-    resolution: {integrity: sha512-f3u3TwCsxm+H/jIyDJ7si4ReXFJc8hc8Dw7QX3pcHMOZ8UAXqKV/CQMLmTkQ8EsZiVDuWJo3JDB/ZTwRzJm7uA==}
 
   '@koa/router@12.0.2':
     resolution: {integrity: sha512-sYcHglGKTxGF+hQ6x67xDfkE9o+NhVlRHBqq6gLywaMc6CojK/5vFZByphdonKinYlMLkEkacm+HEse9HzwgTA==}
@@ -5881,16 +5875,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   '@jsdevtools/ono@7.1.3': {}
-
-  '@kgierke/nuxt-basic-auth@1.6.0(magicast@0.3.5)(rollup@4.22.4)':
-    dependencies:
-      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.22.4)
-      defu: 6.1.4
-    transitivePeerDependencies:
-      - magicast
-      - rollup
-      - supports-color
-      - webpack-sources
 
   '@koa/router@12.0.2':
     dependencies:
