@@ -6,18 +6,21 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  experimental: {
+    viewTransition: true,
+  },
   extends: 'github:naba-baseball/naba-base-layer/layer',
   runtimeConfig: {
     discordWebhook: '',
     deployWebhook: '',
+    auth: {
+      /** username:password */
+      user: '',
+    },
   },
   compatibilityDate: '2024-09-21',
-  modules: ['@kgierke/nuxt-basic-auth', '@nuxthub/core'],
+  modules: ['@nuxthub/core', 'nuxt-auth-utils'],
   hub: {
     blob: true,
-  },
-  basicAuth: {
-    enabled: true,
-    allowedRoutes: ['/webhooks/*'],
   },
 })

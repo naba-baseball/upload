@@ -2,6 +2,7 @@
   "name": "@naba-baseball/upload",
   "type": "module",
   "private": true,
+  "packageManager": "pnpm@9.11.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -20,6 +21,7 @@
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@vueuse/nuxt": "^11.1.0",
     "nuxt": "^3.13.2",
+    "nuxt-auth-utils": "^0.3.9",
     "tailwindcss": "^3.4.12",
     "wrangler": "^3.78.7"
   }

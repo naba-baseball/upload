@@ -1,4 +1,5 @@
-export default defineEventHandler(async (event) => {
+export default defineLazyEventHandler(() => defineEventHandler(async (event) => {
+  await requireUserSession(event)
   if (!useRuntimeConfig(event).deployWebhook) {
     throw createError({
       statusCode: 500,
@@ -7,4 +8,4 @@ export default defineEventHandler(async (event) => {
   }
   await $fetch(useRuntimeConfig(event).deployWebhook, { method: 'POST', body: {} })
   return 'done'
-})
+}))

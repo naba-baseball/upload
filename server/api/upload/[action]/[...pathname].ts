@@ -1,3 +1,4 @@
-export default eventHandler(async (event) => {
+export default defineLazyEventHandler(() => defineEventHandler(async (event) => {
+  await requireUserSession(event)
   return await hubBlob().handleMultipartUpload(event)
-})
+}))
