@@ -1,5 +1,9 @@
 # Upload
+
 The portal for uploading reports.tar.gz files to host OOTP's website export.
+
+- Uses Cloudflare and NuxtHub.
+- Webhooks for succeed/deploy messages to discord. Sometimes your hosting provider will have a feature to use webhooks when something is deployed or updated.
 
 # Nuxt 3 Minimal Starter
 
