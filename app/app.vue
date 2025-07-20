@@ -10,7 +10,7 @@ const { loggedIn, clear } = useUserSession()
       <UContainer>
         <div class="mb-2 flex justify-between">
           <ColorTheme />
-          <LazyUButton v-if="loggedIn" icon="i-lucide-log-out" variant="ghost" color="gray" @click="clear().then(() => { navigateTo('/login', { replace: true }) })">
+          <LazyUButton v-if="loggedIn" icon="i-lucide-log-out" variant="ghost" color="neutral" @click="clear().then(() => void navigateTo('/login', { replace: true }))">
             Log out
           </LazyUButton>
         </div>

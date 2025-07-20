@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
+  typescript: {
+    typeCheck: true,
+  },
   experimental: {
     asyncContext: true,
     typedPages: true,
@@ -38,5 +41,10 @@ export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', '@nuxt/eslint', '@nuxt/ui', '@nuxthub/core', 'nuxt-auth-utils'],
   hub: {
     blob: true,
+  },
+  nitro: {
+    experimental: {
+      openAPI: true,
+    },
   },
 })
