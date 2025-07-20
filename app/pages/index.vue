@@ -25,12 +25,12 @@ async function handleUpload(event: SubmitEvent) {
     if (progress.value > startingProgress)
       loadingProgress.value = progress.value
   })
-  completed.finally(() => { loading.value = false })
+  completed.finally(() => loading.value = false)
   await completed.catch((err) => {
     toast.add({
       title: 'Upload failed',
       description: 'Please try again',
-      timeout: 0,
+      duration: 0,
     })
     throw err
   }).finally(() => { stopProgressSync() })
@@ -39,14 +39,14 @@ async function handleUpload(event: SubmitEvent) {
     toast.add({
       title: 'Deployment trigger failed',
       description: 'Please try again',
-      timeout: 0,
+      duration: 0,
     })
     throw err
   })
   toast.add({
     title: 'Website uploaded!',
     description: 'It should be deployed in a few minutes :)',
-    timeout: 0,
+    duration: Infinity,
   })
 }
 </script>
@@ -65,14 +65,14 @@ async function handleUpload(event: SubmitEvent) {
       class="space-y-4"
       @submit.prevent="handleUpload($event as SubmitEvent)"
     >
-      <UFormGroup label="Upload reports file">
+      <UFormField label="Upload reports file">
         <UInput type="file" name="file" icon="i-lucide-file-archive" required />
         <template #help>
           <span>
             Upload could take several minutes
           </span>
         </template>
-      </UFormGroup>
+      </UFormField>
       <UButton
         icon="i-lucide-upload"
         type="submit"
@@ -80,7 +80,7 @@ async function handleUpload(event: SubmitEvent) {
       >
         Upload file
       </UButton>
-      <UProgress indicator :color="loadingProgress === 100 ? 'green' : 'primary'" :value="loadingProgress" />
+      <UProgress indicator :color="loadingProgress === 100 ? 'success' : 'primary'" :model-value="loadingProgress" />
     </form>
   </UCard>
 </template>

@@ -11,7 +11,7 @@ const submit = await useFetch('/api/user-session', {
   },
 })
 watch(() => submit.status.value === 'success', () => {
-  useUserSession().fetch().then(() => { navigateTo('/', { replace: true }) })
+  useUserSession().fetch().then(() => void navigateTo('/', { replace: true }))
 })
 </script>
 
@@ -23,17 +23,17 @@ watch(() => submit.status.value === 'success', () => {
       </span>
     </template>
     <form class="space-y-4" @submit.prevent="submit.execute()">
-      <UFormGroup label="Username">
-        <UInput id="username" v-model="username" name="username" type="text" />
-      </UFormGroup>
-      <UFormGroup label="Password">
-        <UInput id="password" v-model="password" name="password" type="password" />
-      </UFormGroup>
-      <UFormGroup :error="submit.error.value?.data?.message ">
+      <UFormField label="Username">
+        <UInput id="username" v-model="username" class="w-full" name="username" type="text" />
+      </UFormField>
+      <UFormField label="Password">
+        <UInput id="password" v-model="password" class="w-full" name="password" type="password" />
+      </UFormField>
+      <UFormField :error="submit.error.value?.data?.message ">
         <UButton type="submit">
           Login
         </UButton>
-      </UFormGroup>
+      </UFormField>
     </form>
   </UCard>
 </template>

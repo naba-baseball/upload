@@ -1,13 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+      link: [
+        { rel: 'preconnect', href: 'https://rsms.me' },
+        { rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+      ],
+    },
+  },
+  css: ['~/assets/css/main.css'],
+  experimental: {
+    asyncContext: true,
+    typedPages: true,
+    viewTransition: true,
+  },
+  eslint: {
+    config: {
+      standalone: false,
+    },
+  },
   devtools: {
     enabled: true,
-  },
-  future: {
-    compatibilityVersion: 4,
-  },
-  experimental: {
-    viewTransition: true,
   },
   extends: 'github:naba-baseball/naba-base-layer/layer',
   runtimeConfig: {
@@ -18,8 +34,8 @@ export default defineNuxtConfig({
       user: '',
     },
   },
-  compatibilityDate: '2024-09-21',
-  modules: ['@nuxthub/core', 'nuxt-auth-utils'],
+  compatibilityDate: '2025-07-20',
+  modules: ['@vueuse/nuxt', '@nuxt/eslint', '@nuxt/ui', '@nuxthub/core', 'nuxt-auth-utils'],
   hub: {
     blob: true,
   },

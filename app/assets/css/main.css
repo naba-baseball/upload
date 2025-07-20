@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+@theme {
+    --color-dodger-50: #edf9ff;
+    --color-dodger-100: #d7f1ff;
+    --color-dodger-200: #b9e8ff;
+    --color-dodger-300: #88dbff;
+    --color-dodger-400: #50c5ff;
+    --color-dodger-500: #28a7ff;
+    --color-dodger-600: #1e90ff;
+    --color-dodger-700: #0a71eb;
+    --color-dodger-800: #0f5abe;
+    --color-dodger-900: #134e95;
+    --color-dodger-950: #11305a;
+    --color-woodsmoke-50: #f3f7f8;
+    --color-woodsmoke-100: #e1e9ec;
+    --color-woodsmoke-200: #c5d4dc;
+    --color-woodsmoke-300: #9eb6c2;
+    --color-woodsmoke-400: #6e90a2;
+    --color-woodsmoke-500: #537487;
+    --color-woodsmoke-600: #476073;
+    --color-woodsmoke-700: #3f515f;
+    --color-woodsmoke-800: #394651;
+    --color-woodsmoke-900: #333d46;
+    --color-woodsmoke-950: #080a0c;
+
+    --spacing-sm: 240px;
+    --spacing-md: 400px;
+    --spacing-lg: 800px;
+    --spacing-xl: 1200px;
+}
+
+@theme inline {
+    --font-family-sans: "InterVariable", sans-serif;
+}
+
+:root {
+    --ui-primary: var(--color-dodger-500);
+    --ui-neutral: var(--color-woodsmoke-500);
+}
+
+.transition-name-card {
+    view-transition-name: card;
+}

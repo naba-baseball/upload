@@ -4,11 +4,7 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   antfu({
-    stylistic: {
-      overrides: {
-        '@stylistic/newline-per-chained-call': 'error',
-      },
-    },
+    stylistic: {},
     vue: {
       overrides: {
         'vue/component-name-in-template-casing': [
