@@ -46,7 +46,7 @@ async function handleUpload(event: SubmitEvent) {
   toast.add({
     title: 'Website uploaded!',
     description: 'It should be deployed in a few minutes :)',
-    duration: Infinity,
+    duration: 0,
   })
 }
 </script>
